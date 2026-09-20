@@ -1,0 +1,119 @@
+GIT AND DVC MACHINE LEARNING EXPERIMENT REPORT
+
+1. OBJECTIVE
+This project demonstrates the use of Git and DVC for version control,
+dataset versioning, machine learning model versioning, and reproducibility.
+
+2. PROJECT DETAILS
+Machine Learning Algorithm: Random Forest Classifier
+Dataset: Iris Dataset
+Programming Language: Python
+
+3. GIT VERSION CONTROL
+Git was used to track:
+- Source code
+- Project structure
+- DVC metadata
+- Training code changes
+- Project history
+
+Important commits:
+d160c56 - Initial ML project structure
+b3ef4fd - Initialize DVC
+c315268 - Add Iris dataset with DVC
+2da4981 - Update Iris dataset to version 2
+d07e796 - Configure DVC local remote
+b9c6064 - Add Random Forest model version 1
+8d957ad - Update Random Forest model to version 2
+2f1bbde - Update training parameters for model version 2
+
+4. DATASET VERSIONING
+Dataset Version 1:
+- 150 rows
+- Iris dataset
+
+Dataset Version 2:
+- 151 rows
+- One additional record was added
+
+DVC was used to track the dataset and store its versions.
+
+Dataset version comparison showed:
+Modified:
+    data\iris.csv
+
+5. MODEL VERSIONING
+
+Model Version 1:
+- Algorithm: Random Forest Classifier
+- n_estimators: 100
+- max_depth: None
+- random_state: 42
+- Accuracy: 0.967741935483871
+
+Model Version 2:
+- Algorithm: Random Forest Classifier
+- n_estimators: 200
+- max_depth: 5
+- random_state: 42
+- Accuracy: 0.967741935483871
+
+DVC was used to track and store the model files.
+
+6. MODEL RESTORATION TEST
+Model Version 1 was restored using:
+Git checkout of commit b9c6064
+followed by:
+python -m dvc checkout
+
+The restored model was verified:
+n_estimators: 100
+max_depth: None
+
+Model Version 2 was restored by switching back to main and running:
+python -m dvc checkout
+
+The restored model was verified:
+n_estimators: 200
+max_depth: 5
+
+7. REPRODUCIBILITY TEST
+The GitHub repository was cloned into a separate directory.
+
+The cloned project contained the Git and DVC metadata.
+
+DVC pull successfully retrieved:
+- data\iris.csv
+- models\random_forest.pkl
+
+The retrieved model was verified:
+n_estimators: 200
+max_depth: 5
+
+The retrieved dataset was verified:
+Rows: 151
+Columns: 5
+
+Therefore, the dataset and model could be reproduced from Git and DVC.
+
+8. GIT VS DVC
+
+Git:
+- Used for source code version control
+- Tracks project history
+- Tracks DVC metadata files
+- Supports collaboration through GitHub
+
+DVC:
+- Used for large datasets
+- Used for machine learning model files
+- Stores data and model versions
+- Supports reproducible experiments
+
+9. CONCLUSION
+This experiment demonstrated how Git and DVC can be used together
+for machine learning projects. Git maintained the project code and
+version history, while DVC maintained dataset and model versions.
+Different dataset and model versions were restored successfully,
+and the project was cloned and reproduced successfully using GitHub
+and DVC.
